@@ -17,7 +17,7 @@ class CreateAgendasTable extends Migration
             $table->id();
             $table->string('subject');
             $table->dateTime('date');
-            $table->string('status')->default('pending');
+            $table->string('status');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
 

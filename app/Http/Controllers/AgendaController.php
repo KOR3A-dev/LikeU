@@ -5,6 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Agenda;
 use Illuminate\Http\Request;
 
+
+/**
+* @OA\Tag(
+*     name="AGENDA",
+*     description="Operations about agenda",
+*
+* )
+*/
 class AgendaController extends Controller
 {
 
@@ -19,6 +27,7 @@ class AgendaController extends Controller
     }
 
 
+
     /**
      * Display a listing of the resource.
      *
@@ -26,8 +35,14 @@ class AgendaController extends Controller
      */
     public function index()
     {
-        return Agenda::all();
+        $agendas = Agenda::all();
+
+        return response()->json([
+            'Agendas' => $agendas
+        ],200);
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -49,6 +64,7 @@ class AgendaController extends Controller
             'agenda' => $agenda
         ],201);
     }
+
 
 
     /**
@@ -83,7 +99,7 @@ class AgendaController extends Controller
 
         $agenda->update($request->all());
 
-        if(!$agenda->status == "approved"){
+        if(!$agenda->status == 'approved'){
             return response()->json([
                 'message' => 'Oops! you can only modify agendas in approved status'
             ],400);

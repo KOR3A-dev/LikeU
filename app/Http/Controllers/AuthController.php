@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 
+
+
+/**
+* @OA\Tag(
+*     name="USER",
+*     description="Operations about user",
+* )
+*/
+
 class AuthController extends Controller
 {
     /**
@@ -19,6 +28,45 @@ class AuthController extends Controller
     {
         $this->middleware('auth:api', ['except' => ['login','register']]);
     }
+
+
+    /**
+    * @OA\Post(
+    * path="http://127.0.0.1:8000/api/auth/login",
+    * tags={"USER"},
+    * summary="User Login",
+    * description="Login User Here",
+    *     @OA\RequestBody(
+    *         @OA\JsonContent(),
+    *         @OA\MediaType(
+    *            mediaType="multipart/form-data",
+    *            @OA\Schema(
+    *               type="object",
+    *               required={"email", "password"},
+    *               @OA\Property(property="email", type="email"),
+    *               @OA\Property(property="password", type="password")
+    *            ),
+    *        ),
+    *    ),
+    *      @OA\Response(
+    *          response=201,
+    *          description="Login Successfully",
+    *          @OA\JsonContent()
+    *       ),
+    *      @OA\Response(
+    *          response=200,
+    *          description="Login Successfully",
+    *          @OA\JsonContent()
+    *       ),
+    *      @OA\Response(
+    *          response=422,
+    *          description="Unprocessable Entity",
+    *          @OA\JsonContent()
+    *       ),
+    *      @OA\Response(response=400, description="Bad request"),
+    *      @OA\Response(response=404, description="Resource Not Found"),
+    * )
+    */
 
     /**
      * Get a JWT via given credentials.
@@ -35,6 +83,48 @@ class AuthController extends Controller
 
         return $this->respondWithToken($token);
     }
+
+
+
+    /**
+    * @OA\Post(
+    * path="http://127.0.0.1:8000/api/auth/me",
+    * tags={"USER"},
+    * summary="see user",
+    * description="See user Here",
+    *     @OA\RequestBody(
+    *         @OA\JsonContent(),
+    *         @OA\MediaType(
+    *            mediaType="multipart/form-data",
+    *        ),
+*           @OA\Schema(
+    *           type="object",
+    *           @OA\Property(property="token", type="bearer"),
+    *            ),
+    *    ),
+    *      @OA\Response(
+    *          response=201,
+    *          description="Operation Successfully",
+    *          @OA\JsonContent()
+    *       ),
+    *      @OA\Response(
+    *          response=200,
+    *          description="Operation Successfully",
+    *          @OA\JsonContent()
+    *       ),
+    *      @OA\Response(
+    *          response=422,
+    *          description="Unprocessable Entity",
+    *          @OA\JsonContent()
+    *       ),
+    *      @OA\Response(response=400, description="Bad request"),
+    *      @OA\Response(response=404, description="Resource Not Found"),
+    *      security={
+    *         {"bearer": {}}
+    *      },
+    *
+    * )
+    */
 
     /**
      * Get the authenticated User.
@@ -85,7 +175,49 @@ class AuthController extends Controller
     }
 
 
-      /**
+
+    /**
+    * @OA\Post(
+    * path="http://127.0.0.1:8000/api/auth/register",
+    * tags={"USER"},
+    * summary="User Register",
+    * description="User Register here",
+    *     @OA\RequestBody(
+    *         @OA\JsonContent(),
+    *         @OA\MediaType(
+    *            mediaType="multipart/form-data",
+    *            @OA\Schema(
+    *               type="object",
+    *               required={"name","id_card","date_of_birth","email", "password"},
+    *               @OA\Property(property="name", type="text"),
+    *               @OA\Property(property="id_card", type="integer"),
+    *               @OA\Property(property="date_of_birth", type="date"),
+    *               @OA\Property(property="email", type="text"),
+    *               @OA\Property(property="password", type="password"),
+    *            ),
+    *        ),
+    *    ),
+    *      @OA\Response(
+    *          response=201,
+    *          description="Register Successfully",
+    *          @OA\JsonContent()
+    *       ),
+    *      @OA\Response(
+    *          response=200,
+    *          description="Register Successfully",
+    *          @OA\JsonContent()
+    *       ),
+    *      @OA\Response(
+    *          response=422,
+    *          description="Unprocessable Entity",
+    *          @OA\JsonContent()
+    *       ),
+    *      @OA\Response(response=400, description="Bad request"),
+    *      @OA\Response(response=404, description="Resource Not Found"),
+    * )
+    */
+
+    /**
      * Register users with request.
      *
      * @param  Request $request
