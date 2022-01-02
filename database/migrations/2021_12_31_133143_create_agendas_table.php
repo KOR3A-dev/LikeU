@@ -16,8 +16,7 @@ class CreateAgendasTable extends Migration
         Schema::create('agendas', function (Blueprint $table) {
             $table->id();
             $table->string('subject');
-            $table->date('date');
-            $table->date('time');
+            $table->dateTime('date');
             $table->string('status')->default('pending');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();

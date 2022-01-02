@@ -39,7 +39,6 @@ class AgendaController extends Controller
         $agenda = new Agenda();
         $agenda->subject = $request->input('subject');
         $agenda->date = $request->input('date');
-        $agenda->time = $request->input('time');
         $agenda->status = $request->input('status');
         $agenda->user_id = $request->input('user_id');
 
@@ -79,7 +78,6 @@ class AgendaController extends Controller
 
         $agenda->subject = $request->input('subject');
         $agenda->date = $request->input('date');
-        $agenda->time = $request->input('time');
         $agenda->status = $request->input('status');
         $agenda->user_id = $request->input('user_id');
 

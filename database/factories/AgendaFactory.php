@@ -17,8 +17,7 @@ class AgendaFactory extends Factory
     {
         return [
             'subject' => $this->faker->sentence(3),
-            'date' => $this->faker->date($format = 'Y-m-d'),
-            'time' => $this->faker->time($format = 'H:i:s'),
+            'date' => $this->faker->dateTime($max = 'now', $timezone = null),
             'status' => $this->faker->randomElement(['pending','made','canceled','not attended','approved']),
             'user_id' => $this->faker->numberBetween(1,20),
         ];

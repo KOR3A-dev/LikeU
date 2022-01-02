@@ -19,8 +19,7 @@ class Agenda extends Model
     protected $fillable = [
         'subject',
         'date',
-        'time','
-        status',
+        'status',
         'user_id'
     ];
 
@@ -31,8 +30,7 @@ class Agenda extends Model
     * @var array
     */
     protected $casts = [
-        'date' => 'date:Y-m-d',
-        'time' => 'date:h:m:s',
+        'date' => 'date:Y-m-d h:m:s',
     ];
 
 
