@@ -18,7 +18,7 @@ generate app key
 then run the following command to create migrations in the databbase.
 ###### `php artisan migrate --seed`
 ##### Generate jwt packages
-generate app key
+require tymon/jwt-auth
 ###### `composer require tymon/jwt-auth`
 ##### Generate Key JWT
 then run the following command to generate fresh key.
