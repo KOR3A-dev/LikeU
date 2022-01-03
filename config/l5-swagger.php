@@ -18,7 +18,7 @@ return [
                 /*
                  * Edit to include full URL in ui for assets
                 */
-                'use_absolute_path' => env('L5_SWAGGER_USE_ABSOLUTE_PATH', true),
+                'use_absolute_path' => env('L5_SWAGGER_USE_ABSOLUTE_PATH', false),
 
                 /*
                  * File name of the generated json documentation file
@@ -147,13 +147,14 @@ return [
         */
         'securityDefinitions' => [
             'securitySchemes' => [
-
-                'api_key_security' => [ // Unique name of security
-                    'type' => 'apiKey', // The type of the security scheme. Valid values are "basic", "apiKey" or "oauth2".
-                    'description' => 'A short description for security scheme',
-                    'name' => 'Authorization', // The name of the header or query parameter to be used.
-                    'in' => 'header', // The location of the API key. Valid values are "query" or "header".
-                ],
+                /**
+                *'api_key_security' => [ // Unique name of security
+                *    'type' => 'apiKey', // The type of the security scheme. Valid values are "basic", "apiKey" or "oauth2".
+                *    'description' => 'A short description for security scheme',
+                *    'name' => 'Authorization', // The name of the header or query parameter to be used.
+                *    'in' => 'header', // The location of the API key. Valid values are "query" or "header".
+                * ],
+                */
 
             ],
             'security' => [

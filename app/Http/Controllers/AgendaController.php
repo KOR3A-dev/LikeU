@@ -27,6 +27,38 @@ class AgendaController extends Controller
     }
 
 
+    /**
+    * @OA\Get(
+    * path="/api/agenda",
+    * tags={"AGENDA"},
+    * summary="see user",
+    * description="See user Here",
+    *     @OA\RequestBody(
+    *         @OA\JsonContent(),
+    *     ),
+    *     @OA\Response(
+    *         response=200,
+    *         description="Operation Successfully",
+    *        @OA\JsonContent(
+    *               @OA\Property(property="subject", type="string"),
+    *               @OA\Property(property="date", type="string"),
+    *               @OA\Property(property="status", type="string"),
+    *               @OA\Property(property="user_id", type="integer"),
+    *           ),
+    *       ),
+    *      @OA\Response(
+    *          response=422,
+    *          description="Unprocessable Entity",
+    *          @OA\JsonContent()
+    *       ),
+    *      @OA\Response(response=400, description="Bad request"),
+    *      @OA\Response(response=404, description="Resource Not Found"),
+    *      security={
+    *         {"bearer": {}}
+    *      },
+    *
+    * )
+    */
 
     /**
      * Display a listing of the resource.

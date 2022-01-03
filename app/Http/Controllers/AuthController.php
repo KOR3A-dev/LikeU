@@ -32,7 +32,7 @@ class AuthController extends Controller
 
     /**
     * @OA\Post(
-    * path="http://127.0.0.1:8000/api/auth/login",
+    * path="/api/auth/login",
     * tags={"USER"},
     * summary="User Login",
     * description="Login User Here",
@@ -43,7 +43,7 @@ class AuthController extends Controller
     *            @OA\Schema(
     *               type="object",
     *               required={"email", "password"},
-    *               @OA\Property(property="email", type="email"),
+    *               @OA\Property(property="email", type="string"),
     *               @OA\Property(property="password", type="password")
     *            ),
     *        ),
@@ -88,7 +88,7 @@ class AuthController extends Controller
 
     /**
     * @OA\Post(
-    * path="http://127.0.0.1:8000/api/auth/me",
+    * path="/api/auth/me",
     * tags={"USER"},
     * summary="see user",
     * description="See user Here",
@@ -96,21 +96,21 @@ class AuthController extends Controller
     *         @OA\JsonContent(),
     *         @OA\MediaType(
     *            mediaType="multipart/form-data",
-    *        ),
-*           @OA\Schema(
-    *           type="object",
-    *           @OA\Property(property="token", type="bearer"),
-    *            ),
-    *    ),
-    *      @OA\Response(
-    *          response=201,
-    *          description="Operation Successfully",
-    *          @OA\JsonContent()
-    *       ),
-    *      @OA\Response(
-    *          response=200,
-    *          description="Operation Successfully",
-    *          @OA\JsonContent()
+    *          @OA\schema(
+    *               type="object",
+    *               @OA\Property(property="token", type="string"),
+    *           ),
+    *         ),
+    *     ),
+    *     @OA\Response(
+    *         response=200,
+    *         description="Operation Successfully",
+    *        @OA\JsonContent(
+    *               @OA\Property(property="name", type="string"),
+    *               @OA\Property(property="id_card", type="integer"),
+    *               @OA\Property(property="date_of_birth", type="string"),
+    *               @OA\Property(property="email", type="string"),
+    *           ),
     *       ),
     *      @OA\Response(
     *          response=422,
@@ -178,7 +178,7 @@ class AuthController extends Controller
 
     /**
     * @OA\Post(
-    * path="http://127.0.0.1:8000/api/auth/register",
+    * path="/api/auth/register",
     * tags={"USER"},
     * summary="User Register",
     * description="User Register here",
@@ -189,10 +189,10 @@ class AuthController extends Controller
     *            @OA\Schema(
     *               type="object",
     *               required={"name","id_card","date_of_birth","email", "password"},
-    *               @OA\Property(property="name", type="text"),
+    *               @OA\Property(property="name", type="string"),
     *               @OA\Property(property="id_card", type="integer"),
-    *               @OA\Property(property="date_of_birth", type="date"),
-    *               @OA\Property(property="email", type="text"),
+    *               @OA\Property(property="date_of_birth", type="string"),
+    *               @OA\Property(property="email", type="string"),
     *               @OA\Property(property="password", type="password"),
     *            ),
     *        ),
@@ -200,7 +200,12 @@ class AuthController extends Controller
     *      @OA\Response(
     *          response=201,
     *          description="Register Successfully",
-    *          @OA\JsonContent()
+    *          @OA\JsonContent(
+    *               @OA\Property(property="name", type="string"),
+    *               @OA\Property(property="id_card", type="integer"),
+    *               @OA\Property(property="date_of_birth", type="string"),
+    *               @OA\Property(property="email", type="string"),
+    *          ),
     *       ),
     *      @OA\Response(
     *          response=200,

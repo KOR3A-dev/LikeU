@@ -9,7 +9,68 @@
         "version": "1.0.0"
     },
     "paths": {
-        "http://127.0.0.1:8000/api/auth/login": {
+        "/api/agenda": {
+            "get": {
+                "tags": [
+                    "AGENDA"
+                ],
+                "summary": "see user",
+                "description": "See user Here",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operation Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "subject": {
+                                            "type": "string"
+                                        },
+                                        "date": {
+                                            "type": "string"
+                                        },
+                                        "status": {
+                                            "type": "string"
+                                        },
+                                        "user_id": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/login": {
             "post": {
                 "tags": [
                     "USER"
@@ -26,7 +87,7 @@
                                 ],
                                 "properties": {
                                     "email": {
-                                        "type": "email"
+                                        "type": "string"
                                     },
                                     "password": {
                                         "type": "password"
@@ -74,7 +135,7 @@
                 }
             }
         },
-        "http://127.0.0.1:8000/api/auth/me": {
+        "/api/auth/me": {
             "post": {
                 "tags": [
                     "USER"
@@ -83,26 +144,43 @@
                 "description": "See user Here",
                 "requestBody": {
                     "content": {
-                        "multipart/form-data": {},
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "token": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
                         "application/json": {
                             "schema": {}
                         }
                     }
                 },
                 "responses": {
-                    "201": {
-                        "description": "Operation Successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
                     "200": {
                         "description": "Operation Successfully",
                         "content": {
                             "application/json": {
-                                "schema": {}
+                                "schema": {
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "id_card": {
+                                            "type": "integer"
+                                        },
+                                        "date_of_birth": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
                             }
                         }
                     },
@@ -128,7 +206,7 @@
                 ]
             }
         },
-        "http://127.0.0.1:8000/api/auth/register": {
+        "/api/auth/register": {
             "post": {
                 "tags": [
                     "USER"
@@ -148,16 +226,16 @@
                                 ],
                                 "properties": {
                                     "name": {
-                                        "type": "text"
+                                        "type": "string"
                                     },
                                     "id_card": {
                                         "type": "integer"
                                     },
                                     "date_of_birth": {
-                                        "type": "date"
+                                        "type": "string"
                                     },
                                     "email": {
-                                        "type": "text"
+                                        "type": "string"
                                     },
                                     "password": {
                                         "type": "password"
@@ -176,7 +254,23 @@
                         "description": "Register Successfully",
                         "content": {
                             "application/json": {
-                                "schema": {}
+                                "schema": {
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "id_card": {
+                                            "type": "integer"
+                                        },
+                                        "date_of_birth": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
                             }
                         }
                     },
@@ -216,16 +310,6 @@
             "description": "Operations about user"
         }
     ],
-    "components": {
-        "securitySchemes": {
-            "api_key_security": {
-                "type": "apiKey",
-                "description": "A short description for security scheme",
-                "name": "Authorization",
-                "in": "header"
-            }
-        }
-    },
     "security": {
         "bearer": {
             "type": "http",
