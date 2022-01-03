@@ -24,6 +24,7 @@ it's time to run our server
 have a registered postman account, login to workspace and work on bearer token requests and parameters. 
 
 ##### Documentation 
+swagger documentation
 *documentation `/api/documentation`
 ### API EndPoints
 ##### User
