@@ -49,7 +49,7 @@ class AgendaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function store(Request $request)
     {
         $agenda = new Agenda();
         $agenda->subject = $request->input('subject');
@@ -88,7 +88,7 @@ class AgendaController extends Controller
      * @param  \App\Models\Agenda  $agenda
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $agenda = Agenda::find($id);
 

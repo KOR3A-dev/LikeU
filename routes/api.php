@@ -41,8 +41,8 @@ use Illuminate\Support\Facades\Route;
      *
      */
     Route::get('agenda', 'AgendaController@index');
-    Route::post('agenda', 'AgendaController@create');
-    Route::put('agenda/{id}', 'AgendaController@edit');
+    Route::post('agenda', 'AgendaController@store');
+    Route::put('agenda/{id}', 'AgendaController@update');
     Route::get('agenda/{id}', 'AgendaController@show');
     Route::delete('agenda/{id}', 'AgendaController@destroy');
 
