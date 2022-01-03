@@ -14,12 +14,15 @@ cd into the project directory via terminal and run the following  command to ins
 ##### Generate Key Laravel
 generate app key
 ###### `php artisan key:generate`
-##### Generate Key JWT
-then run the following command to generate fresh key.
-###### `php artisan jwt:secret`
 ##### Run Migration
 then run the following command to create migrations in the databbase.
 ###### `php artisan migrate --seed`
+##### Generate jwt packages
+generate app key
+###### `composer require tymon/jwt-auth`
+##### Generate Key JWT
+then run the following command to generate fresh key.
+###### `php artisan jwt:secret`
 ### Run Server
 it's time to run our server
 ###### `php artisan serve`
