@@ -11,6 +11,9 @@ Copy contents of .env.example file to .env file. Create a database and connect y
 ##### Composer Install
 cd into the project directory via terminal and run the following  command to install composer packages.
 ###### `composer install`
+##### Generate Key Laravel
+generate app key
+###### `php artisan key:generate`
 ##### Generate Key JWT
 then run the following command to generate fresh key.
 ###### `php artisan jwt:secret`
