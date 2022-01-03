@@ -216,6 +216,16 @@
             "description": "Operations about user"
         }
     ],
+    "components": {
+        "securitySchemes": {
+            "api_key_security": {
+                "type": "apiKey",
+                "description": "A short description for security scheme",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    },
     "security": {
         "bearer": {
             "type": "http",
