@@ -17,7 +17,14 @@ then run the following command to generate fresh key.
 ##### Run Migration
 then run the following command to create migrations in the databbase.
 ###### `php artisan migrate --seed`
+### Run Server
+it's time to run our server
+###### `php artisan serve`
+### Running local server via postman
+have a registered postman account, login to workspace and work on bearer token requests and parameters. 
 
+##### Documentation 
+*documentation `http://localhost:8000/api/documentation`
 ### API EndPoints
 ##### User
 * Post POST register `http://localhost:8000/api/auth/register`
