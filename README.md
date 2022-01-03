@@ -1,4 +1,4 @@
-# Laravel 5.8 API LIKEU
+# Laravel 8.0 API LIKEU
 This API is created using Laravel 5.8 API Resource. It has Users, Posts and Comments. Protected routes are also added. Protected routes are accessed via Passport access token.
 
 #### Following are the Models
