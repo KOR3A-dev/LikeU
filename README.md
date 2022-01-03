@@ -36,4 +36,3 @@ have a registered postman account, login to workspace and work on bearer token r
 * Agenda POST Create `/api/agenda`
 * Agenda PUT Update `/api/agenda/{id}`
 * Agenda DELETE destroy `/api/agenda/{id}`
-Same For Comments.
