@@ -29,9 +29,9 @@ it's time to run our server
 ### Running local server via postman
 have a registered postman account, login to workspace and work on bearer token requests and parameters. 
 
-##### Documentation 
+### Documentation 
 swagger documentation
-*documentation `/api/documentation`
+##### `/api/documentation`
 ### API EndPoints
 ##### User
 * User POST register `/api/auth/register`
