@@ -24,16 +24,16 @@ it's time to run our server
 have a registered postman account, login to workspace and work on bearer token requests and parameters. 
 
 ##### Documentation 
-*documentation `http://localhost:8000/api/documentation`
+*documentation `/api/documentation`
 ### API EndPoints
 ##### User
-* Post POST register `http://localhost:8000/api/auth/register`
-* Post POST login `http://localhost:8000/api/auth/login`
-* Post POST me `http://localhost:8000/api/auth/me`
+* User POST register `/api/auth/register`
+* User POST login `/api/auth/login`
+* User POST me `/api/auth/me`
 ##### Agenda
-* Post GET All `http://localhost:8000/api/agenda`
-* Post GET Single `http://localhost:8000/api/agenda/{id}`
-* Post POST Create `http://localhost:8000/api/agenda`
-* Post PUT Update `http://localhost:8000/api/agenda/{id}`
-* Post DELETE destroy `http://localhost:8000/api/agenda/{id}`
+* Agenda GET All `/api/agenda`
+* Agenda GET Single `/api/agenda/{id}`
+* Agenda POST Create `/api/agenda`
+* Agenda PUT Update `/api/agenda/{id}`
+* Agenda DELETE destroy `/api/agenda/{id}`
 Same For Comments.
