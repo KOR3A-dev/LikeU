@@ -4,7 +4,7 @@ This API is created using Laravel 8.0 API Resource. It has Users and Agenda's. P
 #### Following are the Models
 * User
 * Agenda
-## starting 🚀
+## Starting 🚀
 Clone the project via git clone or download the zip file.
 ##### .env
 Copy contents of .env.example file to .env file. Create a database and connect your database in .env file.
