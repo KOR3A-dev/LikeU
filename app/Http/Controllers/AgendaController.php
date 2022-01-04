@@ -165,7 +165,7 @@ class AgendaController extends Controller
 
         if($agenda->status != 'approved'){
             return response()->json([
-                'message' => 'Oops! you can only modify agendas in approved status'
+                'message' => 'Oops! you can only modify agendas in approved status.'
             ],400);
         }
 

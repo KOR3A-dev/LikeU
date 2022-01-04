@@ -36,6 +36,7 @@ use Illuminate\Support\Facades\Route;
         Route::post('register', 'AuthController@register');
     });
 
+
     /**
      * Agenda route.
      *
