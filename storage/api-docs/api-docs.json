@@ -1,12 +1,9 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Management of a customer's agenda",
-        "description": "Likeu technical test, api creation",
-        "contact": {
-            "email": "alejandro.valencia3@utp.edu.co"
-        },
-        "version": "1.0.0"
+        "title": " API Management of a customer's agenda",
+        "description": "Likeu technical test, api creation.",
+        "version": "1.0"
     },
     "paths": {
         "/api/agenda": {
@@ -14,10 +11,51 @@
                 "tags": [
                     "AGENDA"
                 ],
-                "summary": "see user",
-                "description": "See user Here",
+                "summary": "see Agenda's",
+                "description": "See Agenda's Here",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "Operation Successfully"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "AGENDA"
+                ],
+                "summary": "create Agenda",
+                "description": "See Agenda's Here",
+                "operationId": "store",
                 "requestBody": {
                     "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "subject": {
+                                        "type": "string"
+                                    },
+                                    "date": {
+                                        "type": "string"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "user_id": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
                         "application/json": {
                             "schema": {}
                         }
@@ -62,12 +100,7 @@
                     "404": {
                         "description": "Resource Not Found"
                     }
-                },
-                "security": [
-                    {
-                        "bearer": []
-                    }
-                ]
+                }
             }
         },
         "/api/auth/login": {
@@ -300,14 +333,25 @@
             }
         }
     },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "name": "bearerAuth",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
     "tags": [
         {
             "name": "AGENDA",
-            "description": "Operations about agenda"
+            "description": "Agenda requests"
         },
         {
             "name": "USER",
-            "description": "Operations about user"
+            "description": "User requests"
         }
     ],
     "security": {

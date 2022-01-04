@@ -42,7 +42,7 @@ use Illuminate\Support\Facades\Route;
      */
     Route::get('agenda', 'AgendaController@index');
     Route::post('agenda', 'AgendaController@store');
-    Route::put('agenda/{id}', 'AgendaController@update');
+    Route::post('agenda/{id}', 'AgendaController@update');
     Route::get('agenda/{id}', 'AgendaController@show');
     Route::delete('agenda/{id}', 'AgendaController@destroy');
 

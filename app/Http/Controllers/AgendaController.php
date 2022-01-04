@@ -6,13 +6,8 @@ use App\Models\Agenda;
 use Illuminate\Http\Request;
 
 
-/**
-* @OA\Tag(
-*     name="AGENDA",
-*     description="Operations about agenda",
-*
-* )
-*/
+
+
 class AgendaController extends Controller
 {
 
@@ -31,31 +26,24 @@ class AgendaController extends Controller
     * @OA\Get(
     * path="/api/agenda",
     * tags={"AGENDA"},
-    * summary="see user",
-    * description="See user Here",
-    *     @OA\RequestBody(
-    *         @OA\JsonContent(),
-    *     ),
+    * summary="see Agenda's",
+    * description="See Agenda's Here",
+    * operationId="index",
     *     @OA\Response(
     *         response=200,
     *         description="Operation Successfully",
-    *        @OA\JsonContent(
-    *               @OA\Property(property="subject", type="string"),
-    *               @OA\Property(property="date", type="string"),
-    *               @OA\Property(property="status", type="string"),
-    *               @OA\Property(property="user_id", type="integer"),
-    *           ),
+    *     @OA\Schema(
+    *       additionalProperties={
+    *         "type":"integer",
+    *         "format":"int32"
+    *       }
+    *     )
     *       ),
     *      @OA\Response(
     *          response=422,
     *          description="Unprocessable Entity",
     *          @OA\JsonContent()
     *       ),
-    *      @OA\Response(response=400, description="Bad request"),
-    *      @OA\Response(response=404, description="Resource Not Found"),
-    *      security={
-    *         {"bearer": {}}
-    *      },
     *
     * )
     */
@@ -75,6 +63,47 @@ class AgendaController extends Controller
     }
 
 
+
+    /**
+    * @OA\Post(
+    * path="/api/agenda",
+    * tags={"AGENDA"},
+    * summary="create Agenda",
+    * description="See Agenda's Here",
+    *   operationId="store",
+    *     @OA\RequestBody(
+    *         @OA\JsonContent(),
+    *         @OA\MediaType(
+    *            mediaType="multipart/form-data",
+    *          @OA\schema(
+    *               type="object",
+    *               @OA\Property(property="subject", type="string"),
+    *               @OA\Property(property="date", type="string"),
+    *               @OA\Property(property="status", type="string"),
+    *               @OA\Property(property="user_id", type="integer"),
+    *           ),
+    *         ),
+    *     ),
+    *     @OA\Response(
+    *         response=200,
+    *         description="Operation Successfully",
+    *        @OA\JsonContent(
+    *               @OA\Property(property="subject", type="string"),
+    *               @OA\Property(property="date", type="string"),
+    *               @OA\Property(property="status", type="string"),
+    *               @OA\Property(property="user_id", type="integer"),
+    *           ),
+    *       ),
+    *      @OA\Response(
+    *          response=422,
+    *          description="Unprocessable Entity",
+    *          @OA\JsonContent()
+    *       ),
+    *      @OA\Response(response=400, description="Bad request"),
+    *      @OA\Response(response=404, description="Resource Not Found"),
+    *
+    * )
+    */
 
     /**
      * Show the form for creating a new resource.
@@ -99,6 +128,7 @@ class AgendaController extends Controller
 
 
 
+
     /**
      * Display the specified resource.
      *
@@ -113,6 +143,7 @@ class AgendaController extends Controller
             'agenda' => $agenda
         ]);
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -130,18 +161,21 @@ class AgendaController extends Controller
         $agenda->user_id = $request->input('user_id');
 
         $agenda->update($request->all());
+        $agenda->save();
 
-        if(!$agenda->status == 'approved'){
+        if($agenda->status != 'approved'){
             return response()->json([
                 'message' => 'Oops! you can only modify agendas in approved status'
             ],400);
         }
+
 
         return response()->json([
             'message' => 'agenda edited successfully!',
             'agenda' => $agenda
         ],200);
     }
+
 
 
 

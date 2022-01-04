@@ -10,12 +10,6 @@ use App\Models\User;
 
 
 
-/**
-* @OA\Tag(
-*     name="USER",
-*     description="Operations about user",
-* )
-*/
 
 class AuthController extends Controller
 {
