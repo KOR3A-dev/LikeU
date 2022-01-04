@@ -41,5 +41,5 @@ swagger documentation
 * Agenda GET All `/api/agenda`
 * Agenda GET Single `/api/agenda/{id}`
 * Agenda POST Create `/api/agenda`
-* Agenda PUT Update `/api/agenda/{id}`
+* Agenda POST Update `/api/agenda/{id}`
 * Agenda DELETE destroy `/api/agenda/{id}`
