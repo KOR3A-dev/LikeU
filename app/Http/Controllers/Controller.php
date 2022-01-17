@@ -18,6 +18,9 @@ use Illuminate\Routing\Controller as BaseController;
 *      scheme="bearer",
 *      bearerFormat="JWT",
 * ),
+*      security={
+*         {"bearerAuth": {}}
+*      },
 * @OA\Tag(
 *     name="AGENDA",
 *     description="Agenda requests",

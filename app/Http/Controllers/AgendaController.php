@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agenda;
+use App\Models\User;
 use Illuminate\Http\Request;
-
-
-
 
 class AgendaController extends Controller
 {
@@ -44,6 +42,9 @@ class AgendaController extends Controller
     *          description="Unprocessable Entity",
     *          @OA\JsonContent()
     *       ),
+    *      security={
+    *         {"bearerAuth": {}}
+    *      },
     *
     * )
     */
@@ -55,7 +56,8 @@ class AgendaController extends Controller
      */
     public function index()
     {
-        $agendas = Agenda::all();
+
+        $agendas = \Auth::user()->agendas;
 
         return response()->json([
             'Agendas' => $agendas
@@ -101,6 +103,9 @@ class AgendaController extends Controller
     *       ),
     *      @OA\Response(response=400, description="Bad request"),
     *      @OA\Response(response=404, description="Resource Not Found"),
+    *      security={
+    *         {"bearerAuth": {}}
+    *      },
     *
     * )
     */
@@ -127,8 +132,6 @@ class AgendaController extends Controller
     }
 
 
-
-
     /**
      * Display the specified resource.
      *
@@ -138,10 +141,17 @@ class AgendaController extends Controller
     public function show($id)
     {
         $agenda = Agenda::find($id);
+        $user = \Auth::user()->id;
+
+        if($agenda->user_id != $user){
+            return response()->json([
+                'message' => 'Not authorized'
+            ],400);
+        }
 
         return response()->json([
             'agenda' => $agenda
-        ]);
+        ],200);
     }
 
 
